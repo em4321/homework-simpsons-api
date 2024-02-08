@@ -23,16 +23,43 @@ class App extends Component {
     simpsons.splice(index, 1);
     this.setState({ simpsons });
   };
+  onLikeCharacter = (name) => {
+    const simpsons = [...this.state.simpsons];
+    const index = simpsons.findIndex((item) => item.character === name);
+    simpsons[index].liked = !simpsons[index].liked;
+    this.setState({ simpsons });
+  };
   render() {
     console.log(this.state);
     if (!this.state.simpsons) {
-      return <Spinner />;
+      return (
+        <>
+          <h1>Loading...</h1>
+          <Spinner />
+        </>
+      );
     }
+    let total = 0;
+    this.state.simpsons.forEach((item) => {
+      if (item.liked) {
+        total++;
+      }
+    });
     return (
-      <Interface
-        simpsons={this.state.simpsons}
-        onDeleteCharacter={this.onDeleteCharacter}
-      />
+      <>
+        <header>
+          <h1>The Simpsons Quotes</h1>
+        </header>
+        <main>
+          <Interface
+            total={total}
+            simpsons={this.state.simpsons}
+            onDeleteCharacter={this.onDeleteCharacter}
+            onLikeCharacter={this.onLikeCharacter}
+          />
+        </main>
+        <footer></footer>
+      </>
     );
   }
 }

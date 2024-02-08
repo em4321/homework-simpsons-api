@@ -2,16 +2,34 @@ import React, { Component } from "react";
 
 class Characters extends Component {
   render() {
-    console.log(this.props);
-    const { character, characterDirection, image, quote, onDeleteCharacter } =
-      this.props;
+    const {
+      character,
+      characterDirection,
+      image,
+      quote,
+      onDeleteCharacter,
+      onLikeCharacter,
+      liked,
+    } = this.props;
     return (
-      <div key={character}>
-        <h1>{character}</h1>
-        <h2>"{quote}"</h2>
-
-        <img src={image} alt={characterDirection} />
-        <button onClick={() => onDeleteCharacter(character)}>Delete</button>
+      <div className="character" key={character}>
+        <h1>{character.toUpperCase()}...</h1>
+        <h3>..."{quote}"</h3>
+        <img className={characterDirection} src={image} alt={character} />
+        <button
+          style={{ backgroundColor: "pink" }}
+          onClick={() => onDeleteCharacter(character)}
+        >
+          Delete
+        </button>
+        <button
+          style={{
+            backgroundColor: liked ? "red" : "pink",
+          }}
+          onClick={() => onLikeCharacter(character)}
+        >
+          Like
+        </button>
       </div>
     );
   }
