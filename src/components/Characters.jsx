@@ -13,8 +13,9 @@ class Characters extends Component {
       liked,
     } = this.props;
     return (
-      <div className="character" key={character}>
-        <div className="character2">
+      <>
+        <div className="character" key={character}>
+          {/* <div className="character2"> */}
           <h1
             style={{
               textAlign: "center",
@@ -25,23 +26,26 @@ class Characters extends Component {
           </h1>
           <img className={characterDirection} src={image} alt={character} />
 
-          <button
-            style={{ backgroundColor: "#f5f580" }}
-            onClick={() => onDeleteCharacter(character)}
-          >
-            Delete
-          </button>
-          <button
-            style={{
-              backgroundColor: liked ? "#f66e85" : "#f5f580",
-            }}
-            onClick={() => onLikeCharacter(character)}
-          >
-            Like
-          </button>
+          {/* </div> */}
+          <h3>..."{quote}"</h3>
+          <div className="buttons">
+            <button
+              style={{ backgroundColor: "#f5f580" }}
+              onClick={() => onDeleteCharacter(character)}
+            >
+              Delete
+            </button>
+            <button
+              style={{
+                backgroundColor: liked ? "#f66e85" : "#f5f580",
+              }}
+              onClick={() => onLikeCharacter(character)}
+            >
+              Like
+            </button>
+          </div>
         </div>
-        <h3>..."{quote}"</h3>
-      </div>
+      </>
     );
   }
 }
