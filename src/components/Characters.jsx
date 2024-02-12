@@ -15,20 +15,17 @@ class Characters extends Component {
     return (
       <>
         <div className="character" key={character}>
-          {/* <div className="character2"> */}
-          <h1
-            style={{
-              textAlign: "center",
-              backgroundColor: "#efcba4",
-            }}
-          >
-            {character.toUpperCase()}
-          </h1>
-          <img className={characterDirection} src={image} alt={character} />
+          <div className="nameAndButtons">
+            <h1
+              className="characterName"
+              style={{
+                textAlign: "center",
+                backgroundColor: "#efcba4",
+              }}
+            >
+              {character.toUpperCase()}
+            </h1>
 
-          {/* </div> */}
-          <h3>..."{quote}"</h3>
-          <div className="buttons">
             <button
               style={{ backgroundColor: "#f5f580" }}
               onClick={() => onDeleteCharacter(character)}
@@ -44,6 +41,9 @@ class Characters extends Component {
               Like
             </button>
           </div>
+          <img className={characterDirection} src={image} alt={character} />
+
+          <h3>..."{quote}"</h3>
         </div>
       </>
     );

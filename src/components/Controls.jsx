@@ -5,7 +5,13 @@ const Controls = (props) => {
       <select
         onChange={props.onSortSelect}
         style={{
-          backgroundColor: "white",
+          backgroundColor: "#efcba4",
+          borderRadius: "25px",
+          textAlign: "center",
+          width: "150px",
+          height: "40px",
+          color: "white",
+          border: "1px solid white",
         }}
       >
         <option value="A-Z">Character: A-Z</option>

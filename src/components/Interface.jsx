@@ -38,9 +38,9 @@ class Interface extends Component {
     return (
       <>
         <Input onTextInput={this.onTextInput} />
-        <Controls onSortSelect={this.onSortSelect} />
         <p>Remaining Characters: {this.props.simpsons.length}</p>
         <p>Liked Characters: {this.props.total}</p>
+        <Controls onSortSelect={this.onSortSelect} />
         {filtered.map((item, index) => {
           //Create children
           return (
