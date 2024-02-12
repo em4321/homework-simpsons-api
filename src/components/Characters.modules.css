@@ -7,7 +7,7 @@
   flex-direction: row;
   align-items: center;
   background-color: #efcba4;
-  margin: 8%;
+  margin: 5%;
   padding: 5%;
   border-radius: 25px;
   border: 1px solid white;
@@ -62,25 +62,26 @@ img {
 .characterName,
 h3 {
   color: white;
+  margin-right: 5px;
 }
 @media screen and (min-width: 150px) {
   .character,
+  .characterName,
   h3 {
     width: 80%;
-    font-size: 90%;
+    font-size: 80%;
     text-align: center;
   }
 }
 
-@media screen and (min-width: 150px) {
-  .characterName {
-    font-size: 15px;
+@media screen and (min-width: 500px) {
+  h1 {
+    font-size: 20px;
   }
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 700px) {
   h3,
-  h1,
   .characterName {
     font-size: 20px;
   }
