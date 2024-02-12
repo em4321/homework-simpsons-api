@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./Characters.modules.css";
+import { FaRegThumbsUp } from "react-icons/fa";
+import { FaRegTrashAlt } from "react-icons/fa";
 
 class Characters extends Component {
   render() {
@@ -30,7 +32,7 @@ class Characters extends Component {
               style={{ backgroundColor: "#f5f580" }}
               onClick={() => onDeleteCharacter(character)}
             >
-              Delete
+              <FaRegTrashAlt className="trash" />
             </button>
             <button
               style={{
@@ -38,7 +40,12 @@ class Characters extends Component {
               }}
               onClick={() => onLikeCharacter(character)}
             >
-              Like
+              <FaRegThumbsUp
+                className="thumbsUp"
+                style={{
+                  backgroundColor: liked ? "#f66e85" : "#f5f580",
+                }}
+              />
             </button>
           </div>
           <img className={characterDirection} src={image} alt={character} />

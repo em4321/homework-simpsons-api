@@ -51,6 +51,13 @@ button {
   border: 1px solid white;
 }
 
+.trash:hover,
+.thumbsUp:hover {
+  color: #f66e85;
+  cursor: pointer;
+  opacity: 60%;
+}
+
 .nameAndButtons {
   background-color: #efcba4;
   display: flex;

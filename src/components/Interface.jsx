@@ -3,6 +3,7 @@ import Characters from "./Characters";
 import Input from "./Input";
 import "./Characters.modules.css";
 import Controls from "./Controls";
+import { FaRegThumbsUp } from "react-icons/fa";
 
 class Interface extends Component {
   state = { textInput: " ", sortSelect: " " };
@@ -38,8 +39,15 @@ class Interface extends Component {
     return (
       <>
         <Input onTextInput={this.onTextInput} />
-        <p>Remaining Characters: {this.props.simpsons.length}</p>
-        <p>Liked Characters: {this.props.total}</p>
+        <p>{this.props.simpsons.length} Remaining</p>
+        <p>
+          <FaRegThumbsUp
+            style={{
+              color: "#f66e85",
+            }}
+          />
+          {this.props.total}
+        </p>
         <Controls onSortSelect={this.onSortSelect} />
         {filtered.map((item, index) => {
           //Create children
