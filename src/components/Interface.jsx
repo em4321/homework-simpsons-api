@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Characters from "./Characters";
 import Input from "./Input";
 import "./Characters.modules.css";
+import Controls from "./Controls";
 
 class Interface extends Component {
   state = { textInput: " ", sortSelect: " " };
@@ -11,7 +12,6 @@ class Interface extends Component {
   onSortSelect = (e) => {
     this.setState({ sortSelect: e.target.value });
   };
-
   render() {
     console.log(this.state);
 
@@ -22,9 +22,23 @@ class Interface extends Component {
         .includes(this.state.textInput.toLowerCase());
     });
 
+    filtered.sort((a, b) => {
+      if (a.character > b.character) {
+        return 1;
+      }
+      if (b.character > a.character) {
+        return -1;
+      }
+      return 0;
+    });
+
+    if (this.state.sortSelect === "Z-A") {
+      filtered.reverse();
+    }
     return (
       <>
         <Input onTextInput={this.onTextInput} />
+        <Controls onSortSelect={this.onSortSelect} />
         <p>Remaining Characters: {this.props.simpsons.length}</p>
         <p>Liked Characters: {this.props.total}</p>
         {filtered.map((item, index) => {
