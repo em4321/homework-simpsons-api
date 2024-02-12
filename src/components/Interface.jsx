@@ -39,7 +39,6 @@ class Interface extends Component {
     return (
       <>
         <Input onTextInput={this.onTextInput} />
-        <p>{this.props.simpsons.length} Remaining</p>
         <p>
           <FaRegThumbsUp
             style={{
@@ -47,7 +46,7 @@ class Interface extends Component {
               margin: "5px",
             }}
           />
-          {this.props.total}
+          {this.props.total} out of {this.props.simpsons.length} Characters
         </p>
         <Controls onSortSelect={this.onSortSelect} />
         {filtered.map((item, index) => {
