@@ -45,7 +45,6 @@ class App extends Component {
         </div>
       );
     }
-    // const { simpsons, sortSelect } = this.state;
 
     let total = 0;
     this.state.simpsons.forEach((item) => {
