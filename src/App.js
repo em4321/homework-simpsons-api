@@ -3,6 +3,7 @@ import axios from "axios";
 import Interface from "./components/Interface";
 import Spinner from "./components/Spinner";
 import "./App.modules.css";
+import Controls from "./components/Controls";
 
 class App extends Component {
   state = {};
@@ -29,15 +30,38 @@ class App extends Component {
     simpsons[index].liked = !simpsons[index].liked;
     this.setState({ simpsons });
   };
+
   render() {
     console.log(this.state);
     if (!this.state.simpsons) {
       return (
-        <>
-          <h1>Loading...</h1>
+        <div
+          className="loading"
+          style={{
+            marginTop: "300px",
+          }}
+        >
+          <h1>Loading Quotes...</h1>
           <Spinner />
-        </>
+        </div>
       );
+    }
+    const { simpsons, sortSelect } = this.state;
+
+    let sortedCharacters = [...simpsons];
+
+    sortedCharacters = sortedCharacters.sort((a, b) => {
+      if (a.character > b.character) {
+        return 1;
+      }
+      if (b.character > a.character) {
+        return -1;
+      }
+      return 0;
+    });
+
+    if (sortSelect === "Z-A") {
+      sortedCharacters.reverse();
     }
     let total = 0;
     this.state.simpsons.forEach((item) => {
@@ -51,6 +75,7 @@ class App extends Component {
           <h1>The Simpsons Quotes</h1>
         </header>
         <main>
+          <Controls onSortSelect={this.onSortSelect} />
           <Interface
             total={total}
             simpsons={this.state.simpsons}

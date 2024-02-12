@@ -1,14 +1,20 @@
 import React, { Component } from "react";
 import Characters from "./Characters";
 import Input from "./Input";
+import "./Characters.modules.css";
 
 class Interface extends Component {
-  state = { textInput: " " };
+  state = { textInput: " ", sortSelect: " " };
   onTextInput = (e) => {
     this.setState({ textInput: e.target.value });
   };
+  onSortSelect = (e) => {
+    this.setState({ sortSelect: e.target.value });
+  };
+
   render() {
     console.log(this.state);
+
     let filtered = [...this.props.simpsons];
     filtered = filtered.filter((item) => {
       return item.character
@@ -19,8 +25,8 @@ class Interface extends Component {
     return (
       <>
         <Input onTextInput={this.onTextInput} />
-        <p>Total Characters: {this.props.simpsons.length}</p>
-        <p>Total Liked: {this.props.total}</p>
+        <p>Remaining Characters: {this.props.simpsons.length}</p>
+        <p>Liked Characters: {this.props.total}</p>
         {filtered.map((item, index) => {
           //Create children
           return (
