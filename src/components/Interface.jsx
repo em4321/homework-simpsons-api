@@ -44,6 +44,7 @@ class Interface extends Component {
           <FaRegThumbsUp
             style={{
               color: "#f66e85",
+              margin: "5px",
             }}
           />
           {this.props.total}
