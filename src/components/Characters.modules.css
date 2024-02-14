@@ -49,6 +49,7 @@ button {
   height: 40px;
   margin: 12px;
   border: 1px solid white;
+  cursor: pointer;
 }
 
 .trash:hover,

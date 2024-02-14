@@ -23,9 +23,9 @@ class App extends Component {
     simpsons.splice(index, 1);
     this.setState({ simpsons });
   };
-  onLikeCharacter = (name) => {
+  onLikeCharacter = (character) => {
     const simpsons = [...this.state.simpsons];
-    const index = simpsons.findIndex((item) => item.character === name);
+    const index = simpsons.findIndex((item) => item.character === character);
     simpsons[index].liked = !simpsons[index].liked;
     this.setState({ simpsons });
   };
@@ -52,6 +52,7 @@ class App extends Component {
         total++;
       }
     });
+
     return (
       <>
         <header>
