@@ -3,6 +3,11 @@ import axios from "axios";
 import Interface from "./components/Interface";
 import Spinner from "./components/Spinner";
 import "./App.modules.css";
+import { Routes, Route } from "react-router-dom";
+import Home from "./components/Home";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Error from "./components/Error";
 
 class App extends Component {
   state = {};
@@ -55,6 +60,12 @@ class App extends Component {
 
     return (
       <>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<Error />} />
+        </Routes>
         <header>
           <h1>The Simpsons Quotes</h1>
         </header>
