@@ -4,12 +4,31 @@ import Input from "./Input";
 import "./Characters.modules.css";
 import Controls from "./Controls";
 import { FaRegThumbsUp } from "react-icons/fa";
+import Joi from "joi";
 
 class Interface extends Component {
   state = { textInput: " ", sortSelect: " " };
-  onTextInput = (e) => {
-    this.setState({ textInput: e.target.value });
+
+  schema = {
+    textInput: Joi.string().min(3).max(10),
+    sortSelect: Joi.required(),
   };
+  onTextInput = async (e) => {
+    this.setState({ textInput: e.target.value });
+    const _joiInstance = Joi.object(this.schema);
+    try {
+      await _joiInstance.validateAsync(this.state);
+    } catch (e) {
+      console.log(e);
+
+      const errorsMod = {};
+      e.details.forEach((error) => {
+        errorsMod[error.context.key] = error.message;
+      });
+      this.setState({ errors: errorsMod });
+    }
+  };
+
   onSortSelect = (e) => {
     this.setState({ sortSelect: e.target.value });
   };
@@ -39,6 +58,7 @@ class Interface extends Component {
     return (
       <>
         <Input onTextInput={this.onTextInput} />
+        <p>{this.state.errors && this.state.errors.textInput}</p>
         <p>
           <FaRegThumbsUp
             style={{
@@ -49,6 +69,7 @@ class Interface extends Component {
           {this.props.total} out of {this.props.simpsons.length} Characters
         </p>
         <Controls onSortSelect={this.onSortSelect} />
+        <p>{this.state.errors && this.state.errors.sortSelect}</p>
         {filtered.map((item, index) => {
           //Create children
           return (
