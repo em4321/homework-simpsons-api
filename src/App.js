@@ -3,7 +3,7 @@ import axios from "axios";
 import Interface from "./components/Interface";
 import Spinner from "./components/Spinner";
 import "./App.modules.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import Home from "./components/Home";
 import About from "./components/About";
 import Contact from "./components/Contact";
@@ -60,6 +60,11 @@ class App extends Component {
 
     return (
       <>
+        <div>
+          <Link to="/">Home</Link>
+          <Link to="about">About</Link>
+          <Link to="contact">Contact</Link>
+        </div>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="about" element={<About />} />
