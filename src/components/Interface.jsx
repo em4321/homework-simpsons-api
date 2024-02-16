@@ -14,10 +14,13 @@ class Interface extends Component {
     sortSelect: Joi.required(),
   };
   onTextInput = async (e) => {
+    // const textInput = { ...this.state.textInput };
+    // textInput = e.target.value;
+
     this.setState({ textInput: e.target.value });
-    const _joiInstance = Joi.object(this.schema);
+    const _joiInput = Joi.object(this.schema);
     try {
-      await _joiInstance.validateAsync(this.state);
+      await _joiInput.validateAsync(this.state);
     } catch (e) {
       console.log(e);
 
@@ -29,9 +32,22 @@ class Interface extends Component {
     }
   };
 
-  onSortSelect = (e) => {
+  onSortSelect = async (e) => {
     this.setState({ sortSelect: e.target.value });
+    const _joiSelect = Joi.object(this.schema);
+    try {
+      await _joiSelect.validateAsync(this.state);
+    } catch (e) {
+      console.log(e);
+
+      const errorsMod = {};
+      e.details.forEach((error) => {
+        errorsMod[error.context.key] = error.message;
+      });
+      this.setState({ errors: errorsMod });
+    }
   };
+
   render() {
     console.log(this.state);
 
