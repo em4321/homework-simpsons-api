@@ -22,15 +22,15 @@ class App extends Component {
     this.setState({ simpsons: data });
   };
 
-  onDeleteCharacter = (character) => {
+  onDeleteCharacter = (quote) => {
     const simpsons = [...this.state.simpsons];
-    const index = simpsons.findIndex((item) => item.character === character);
+    const index = simpsons.findIndex((item) => item.quote === quote);
     simpsons.splice(index, 1);
     this.setState({ simpsons });
   };
-  onLikeCharacter = (character) => {
+  onLikeCharacter = (quote) => {
     const simpsons = [...this.state.simpsons];
-    const index = simpsons.findIndex((item) => item.character === character);
+    const index = simpsons.findIndex((item) => item.quote === quote);
     simpsons[index].liked = !simpsons[index].liked;
     this.setState({ simpsons });
   };

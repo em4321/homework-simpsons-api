@@ -30,7 +30,7 @@ class Characters extends Component {
 
             <button
               style={{ backgroundColor: "#f5f580" }}
-              onClick={() => onDeleteCharacter(character)}
+              onClick={() => onDeleteCharacter(quote)}
             >
               <FaRegTrashAlt className="trash" />
             </button>
@@ -38,7 +38,7 @@ class Characters extends Component {
               style={{
                 backgroundColor: liked ? "#f66e85" : "#f5f580",
               }}
-              onClick={() => onLikeCharacter(character)}
+              onClick={() => onLikeCharacter(quote)}
             >
               <FaRegThumbsUp
                 className="thumbsUp"

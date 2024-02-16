@@ -14,6 +14,7 @@ const Controls = (props) => {
           border: "1px solid white",
         }}
       >
+        <option value="">Please Select</option>
         <option value="A-Z">Character: A-Z</option>
         <option value="Z-A">Character: Z-A</option>
       </select>

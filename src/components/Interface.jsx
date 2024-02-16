@@ -7,36 +7,30 @@ import { FaRegThumbsUp } from "react-icons/fa";
 import Joi from "joi";
 
 class Interface extends Component {
-  state = { textInput: " ", sortSelect: " " };
+  state = { textInput: "", sortSelect: "" };
 
   schema = {
-    textInput: Joi.string().min(3).max(10),
-    sortSelect: Joi.required(),
+    textInput: Joi.string().min(3).max(22),
+    sortSelect: Joi.string().min(1),
   };
   onTextInput = async (e) => {
-    // const textInput = { ...this.state.textInput };
-    // textInput = e.target.value;
-
-    this.setState({ textInput: e.target.value });
-    const _joiInput = Joi.object(this.schema);
-    try {
-      await _joiInput.validateAsync(this.state);
-    } catch (e) {
-      console.log(e);
-
-      const errorsMod = {};
-      e.details.forEach((error) => {
-        errorsMod[error.context.key] = error.message;
-      });
-      this.setState({ errors: errorsMod });
-    }
+    const copyOfState = { ...this.state };
+    copyOfState.textInput = e.target.value;
+    this.setState(copyOfState);
+    this.validate(copyOfState);
   };
 
   onSortSelect = async (e) => {
-    this.setState({ sortSelect: e.target.value });
-    const _joiSelect = Joi.object(this.schema);
+    const copyOfState = { ...this.state };
+    copyOfState.sortSelect = e.target.value;
+    this.setState(copyOfState);
+    this.validate(copyOfState);
+  };
+
+  validate = async (copyOfState) => {
+    const _joiInput = Joi.object(this.schema);
     try {
-      await _joiSelect.validateAsync(this.state);
+      await _joiInput.validateAsync(copyOfState);
     } catch (e) {
       console.log(e);
 
