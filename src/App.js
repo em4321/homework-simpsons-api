@@ -4,7 +4,6 @@ import Interface from "./components/Interface";
 import Spinner from "./components/Spinner";
 import "./App.modules.css";
 import { Routes, Route, Link } from "react-router-dom";
-import Home from "./components/Home";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
@@ -61,26 +60,52 @@ class App extends Component {
     return (
       <>
         <div>
-          <Link to="/">Home</Link>
-          <Link to="about">About</Link>
-          <Link to="contact">Contact</Link>
+          <nav
+            style={{
+              textAlign: "center",
+              marginTop: "20px",
+            }}
+          >
+            <Link
+              style={{
+                marginRight: "20px",
+              }}
+              to="/"
+            >
+              Home
+            </Link>
+            <Link
+              style={{
+                marginRight: "20px",
+              }}
+              to="about"
+            >
+              About
+            </Link>
+            <Link to="contact">Contact</Link>
+          </nav>
         </div>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="*" element={<Error />} />
-        </Routes>
+
         <header>
           <h1>The Simpsons Quotes</h1>
         </header>
         <main>
-          <Interface
-            total={total}
-            simpsons={this.state.simpsons}
-            onDeleteCharacter={this.onDeleteCharacter}
-            onLikeCharacter={this.onLikeCharacter}
-          />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Interface
+                  total={total}
+                  simpsons={this.state.simpsons}
+                  onDeleteCharacter={this.onDeleteCharacter}
+                  onLikeCharacter={this.onLikeCharacter}
+                />
+              }
+            />
+            <Route path="about" element={<About />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="*" element={<Error />} />
+          </Routes>
         </main>
         <footer></footer>
       </>
